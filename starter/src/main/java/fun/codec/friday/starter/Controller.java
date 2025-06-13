@@ -155,7 +155,7 @@ public class Controller extends Application {
 
         treeView.setRoot(null);
         treeView.setShowRoot(false);
-        treeView.setMinWidth(250);
+        treeView.setMinWidth(550);
         treeView.getSelectionModel()
                 .selectedItemProperty()
                 .addListener((observable, oldValue, newValue) -> {
@@ -164,7 +164,7 @@ public class Controller extends Application {
                             String absolutePath = ((FileTreeItem) newValue).getFile().getAbsolutePath();
                             String filePath = absolutePath.substring(
                                 absolutePath.indexOf("dir") + "dir".length() + File.separator.length());
-                            String clazz = filePath.replaceAll(File.separator, ".");
+                            String clazz = filePath.replaceAll(Pattern.quote(File.separator), ".");
                             showClazz(clazz);
                         }
                     }
